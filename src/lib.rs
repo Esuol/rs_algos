@@ -1,3 +1,5 @@
+mod is_sorted;
 mod sorting;
 
-pub use sorting::bubble_sort;
+pub use is_sorted::is_sorted;
+pub use sorting::{bubble_sort, bucket_sort};

@@ -9,7 +9,7 @@ pub fn bucket_sort(arr: &[usize]) -> Vec<usize> {
     let mut buckets = vec![vec![]; len + 1];
 
     for x in arr {
-        buckets[len * *x / max].push(*x);
+        buckets[*x * len / max].push(*x);
     }
 
     for bucket in buckets.iter_mut() {
@@ -27,3 +27,15 @@ pub fn bucket_sort(arr: &[usize]) -> Vec<usize> {
     result
 }
 
+#[cfg(test)]
+mod tests {
+    use crate::is_sorted;
+    use super::*;
+
+    #[test]
+    fn empty() {
+        let arr: [usize; 0] = [];
+        let res = bucket_sort(&arr);
+        assert!(is_sorted(&res));
+    }
+}
