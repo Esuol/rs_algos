@@ -22,3 +22,30 @@ pub fn comp_sort<T: Ord>(arr: &mut [T]) {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::is_sorted;
+
+    #[test]
+    fn test_empty_vec() {
+        let mut empty_vec: Vec<String> = vec![];
+        comp_sort(&mut empty_vec);
+        assert_eq!(empty_vec, Vec::<String>::new());
+    }
+
+    #[test]
+    fn descending() {
+        let mut descending = vec![5, 4, 3, 2, 1];
+        comp_sort(&mut descending);
+        assert!(is_sorted(&descending));
+    }
+
+    #[test]
+    fn ascending() {
+        let mut ascending = vec![1, 2, 3, 4, 5];
+        comp_sort(&mut ascending);
+        assert!(is_sorted(&ascending));
+    }
+}
