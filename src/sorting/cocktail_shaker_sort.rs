@@ -1,7 +1,7 @@
 pub fn cocktail_shaker_sort<T: Ord>(arr: &mut [T]) {
     let len = arr.len();
 
-    if len <= 1 {
+    if len == 0 {
         return;
     }
 
@@ -13,23 +13,23 @@ pub fn cocktail_shaker_sort<T: Ord>(arr: &mut [T]) {
                 arr.swap(i, i + 1);
                 swapped = true;
             }
+        }
 
-            if !swapped {
-                break;
+        if !swapped {
+            break;
+        }
+
+        swapped = false;
+
+        for i in (0..(len - 1).clamp(0, len)).rev() {
+            if arr[i] > arr[i + 1] {
+                arr.swap(i, i + 1);
+                swapped = true;
             }
+        }
 
-            swapped = false;
-
-            for i in (0..(len - 1).clamp(0, len)).rev() {
-                if arr[i] > arr[i + 1] {
-                    arr.swap(i, i + 1);
-                    swapped = true;
-                }
-
-                if !swapped {
-                    break;
-                }
-            }
+        if !swapped {
+            break;
         }
     }
 }
