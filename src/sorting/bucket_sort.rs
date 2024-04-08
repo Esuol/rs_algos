@@ -13,7 +13,7 @@ pub fn bucket_sort(arr: &[usize]) -> Vec<usize> {
     }
 
     for bucket in buckets.iter_mut() {
-        super::bubble_sort::bubble_sort(bucket);
+        super::super::bubble_sort(bucket);
     }
 
     let mut result = vec![];
