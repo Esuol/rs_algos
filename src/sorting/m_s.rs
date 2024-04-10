@@ -51,3 +51,30 @@ where
         k += 1;
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::is_sorted;
+
+    #[test]
+    fn basic() {
+        let mut basic = vec![4, 65, 2, 31, 0, 99, 2, 83, 782, 1];
+        m_s(&mut basic);
+        assert!(is_sorted(&basic));
+    }
+
+    #[test]
+    fn tset_nums_vec() {
+        let mut nums = vec![4, 65, 2, 31, 0, 99, 2, 83, 782, 1];
+        m_s(&mut nums);
+        assert_eq!(nums, vec![0, 1, 2, 2, 4, 31, 65, 83, 99, 782]);
+    }
+
+    #[test]
+    fn test_str_vec() {
+        let mut str_vec = vec!["c", "a", "e", "b", "d"];
+        m_s(&mut str_vec);
+        assert_eq!(str_vec, vec!["a", "b", "c", "d", "e"]);
+    }
+}
